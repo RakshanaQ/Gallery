@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FINOVA - Advanced Finance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #000; /* Black background */
+    padding: 20px;
+    color: white; /* White text for better contrast */
+}
+
+.container {
+    max-width: 75%;
+    margin: 0 auto;
+    background: #111; /* Dark container background */
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+/* ---------- IMAGE AT TOP ---------- */
+.sidebar-image-container {
+    width: 100%;
+    height: 450px;
+    background: url('finova.png') center/cover no-repeat;
+    background-color: #222; /* Dark fallback color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;    
+    margin-top: 25px;
+}
+
+/* Fallback text if image doesn't load */
+.sidebar-image-container::after {
+    content: "FINOVA - Advanced Finance";
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-image-container.load-error::after {
+    display: block;
+}
+
+/* ---------- STEPPER BELOW IMAGE - SINGLE ROW FOR ALL DEVICES ---------- */
+.stepper-container {
+    padding: 25px 40px;
+    background: #000; /* Black background for stepper */
+    border-bottom: 1px solid #333;
+}
+
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+}
+
+.step-label {
+    color: #fff; /* White text */
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    background: #333; /* Dark background for circles */
+    color: #fff;
+}
+
+.active .circle {
+    background: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+.activein .circle {
+    background: #666;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Connector line between steps */
+.stepper::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #444;
+    z-index: 1;
+}
+
+/* ---------- DESCRIPTION CONTENT ---------- */
+.content {
+    padding: 30px 40px;
+    background: #111;
+}
+
+/* Typography - all white for black background */
+.event-card h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.event-card h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 25px 0 10px;
+    color: #fff;
+}
+
+.event-card h5 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 0 5px;
+    color: #fff;
+}
+
+.vent {
+    background: #222; /* Dark grey for vent box */
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 1px solid #333;
+}
+
+.vent h3 {
+    margin: 10px 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.lead {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ccc;
+}
+
+.event-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.event-card ul {
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+.event-card li {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+/* Button */
+.register-btn {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.register-btn button {
+    padding: 12px 40px;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: .3s ease;
+    font-weight: 500;
+    background: #0d6efd;
+    border: none;
+}
+
+.register-btn button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(13,110,253,.6);
+    background: #0b5ed7;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+/* Ensure stepper stays in single row on ALL devices */
+
+/* Tablet (769px to 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+    }
+    
+    .sidebar-image-container {
+        height: 220px;
+    }
+    
+    .stepper-container {
+        padding: 20px 30px;
+    }
+    
+    .content {
+        padding: 25px 30px;
+    }
+    
+    /* Keep stepper in single row */
+    .stepper {
+        max-width: 500px;
+    }
+    
+    .circle {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .step-label {
+        font-size: 12px;
+    }
+}
+
+/* Mobile (768px and below) - STILL SINGLE ROW */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 10px;
+    }
+    
+    .sidebar-image-container {
+        height: 180px;
+    }
+    
+    .stepper-container {
+        padding: 20px 15px;
+    }
+    
+    /* STILL SINGLE ROW - just adjust spacing */
+    .stepper {
+        max-width: 100%;
+        gap: 10px;
+    }
+    
+    .step {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .step-label {
+        font-size: 11px;
+        margin-top: 8px;
+        text-align: center;
+    }
+    
+    .circle {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+    
+    /* Adjust connector line for smaller screens */
+    .stepper::before {
+        top: 16px;
+        left: 15%;
+        right: 15%;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .event-card h2 {
+        font-size: 22px;
+    }
+    
+    .event-card h4 {
+        font-size: 18px;
+    }
+    
+    .event-card h5 {
+        font-size: 16px;
+    }
+    
+    .vent {
+        padding: 15px 20px;
+    }
+    
+    .vent h3 {
+        font-size: 14px;
+        gap: 8px;
+    }
+    
+    .lead, .event-card p, .event-card li {
+        font-size: 14px;
+    }
+    
+    .register-btn button {
+        padding: 10px 30px;
+        font-size: 15px;
+    }
+}
+
+/* Very Small Mobile (480px and below) - STILL SINGLE ROW */
+@media (max-width: 480px) {
+    .sidebar-image-container {
+        height: 150px;
+    }
+    
+    .stepper-container {
+        padding: 15px 10px;
+    }
+    
+    /* STILL SINGLE ROW - minimal adjustments */
+    .stepper {
+        gap: 5px;
+    }
+    
+    .step-label {
+        font-size: 10px;
+        margin-top: 5px;
+    }
+    
+    .circle {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .stepper::before {
+        top: 14px;
+        left: 12%;
+        right: 12%;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .event-card h2 {
+        font-size: 20px;
+    }
+    
+    .event-card h4 {
+        font-size: 17px;
+    }
+    
+    .vent {
+        padding: 12px 15px;
+    }
+    
+    .register-btn button {
+        padding: 10px 25px;
+        font-size: 14px;
+        width: 100%;
+    }
+}
+
+/* Extra Small Devices (360px and below) - STILL SINGLE ROW */
+@media (max-width: 360px) {
+    .stepper-container {
+        padding: 10px 5px;
+    }
+    
+    .step-label {
+        font-size: 9px;
+    }
+    
+    .circle {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+    }
+    
+    .stepper::before {
+        top: 13px;
+        left: 10%;
+        right: 10%;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="sidebar-image-container" id="eventLogo"></div>
+<div class="container">
+    <!-- 1. IMAGE AT TOP - Full Width -->
+    
+    
+    <!-- 2. STEPPER BELOW IMAGE - SINGLE ROW FOR ALL DEVICES -->
+    <div class="stepper-container">
+        <div class="stepper">
+            <div class="step active">
+                <div class="circle">1</div>
+                <span class="step-label">Description</span>
+            </div>
+            <div class="step activein">
+                <div class="circle">2</div>
+                <span class="step-label">Registration</span>
+            </div>
+            <div class="step activein">
+                <div class="circle">3</div>
+                <span class="step-label">Confirmation</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 3. DESCRIPTION CONTENT BELOW STEPPER - Full Width -->
+    <div class="content">
+        <div class="event-card">
+            <h2>FINOVA - Advanced Finance</h2>
+            <p class="lead">
+                Advanced Finance is the application of modern financial concepts and analytical tools to make informed financial decisions.
+            </p>
+            
+            <div class="vent">
+                <h3><i class="bi bi-geo-alt-fill"></i> Venue : GJ BLOCK - Hall No:129</h3>
+                <h3><i class="bi bi-clock-fill"></i> Duration : 11:00 AM - 12:00 PM</h3>
+            </div>
+            
+            <h4>Description:</h4>
+            <p>FINOVA is a solo event designed to test participants' knowledge of modern finance and financial technology using Excel. The event consists of three levels: a quiz round, a finance-in-Excel practical round, and a formatting and formulas round. It focuses on analytical skills, technical accuracy, and effective use of Excel tools.</p>
+            
+            <h5>Rules:</h5>
+            <ul>
+                <li>This is a solo event; team participation is not allowed.</li>
+                <li>The event consists of multiple progressive levels with on-the-spot problem statements at each stage.</li>
+                <li>Professional conduct and discipline must be maintained throughout the event; use of unfair means is strictly prohibited.</li>
+                <li>Advancement to the next level depends solely on the participant's understanding and effective presentation.</li>
+                <li>All participants must be present at the venue at least 10 minutes before the scheduled time.</li>
+                <li>Participants must carry a valid college ID card.</li>
+                <li>Use of mobile phones or external electronic devices during the event is strictly prohibited.</li>
+                <li>Decisions made by the judges will be final.</li>
+                <li>Participants must adhere to the given time limits for each round.</li>
+                <li>Any form of malpractice or misconduct will lead to immediate disqualification.</li>
+            </ul>
+            
+            <div class="register-btn">
+                <button id="registerBtn" class="btn btn-primary">Register Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.getElementById('eventLogo');
+    const img = new Image();
+    
+    img.onload = function() {
+        // Image loaded successfully
+        logo.style.backgroundImage = 'url("finova.png")';
+    };
+    
+    img.onerror = function() {
+        // Image failed to load
+        logo.classList.add('load-error');
+        logo.style.background = '#222';
+        logo.style.display = 'flex';
+        logo.style.alignItems = 'center';
+        logo.style.justifyContent = 'center';
+        logo.style.color = '#fff';
+        logo.style.fontSize = '16px';
+        logo.innerHTML = '<div style="text-align: center; padding: 20px;">FINOVA - Advanced Finance<br><small style="color: #aaa;">finova.png</small></div>';
+    };
+    
+    img.src = 'finova.png';
+    
+    // Register button functionality
+    document.getElementById("registerBtn").onclick = function() {
+        this.classList.replace("btn-primary", "btn-success");
+        this.textContent = "Registered ✔";
+        this.disabled = true;
+        
+        setTimeout(() => {
+            window.location.href = "Finovaregistration.html";
+        }, 500);
+    };
+});
+</script>
+
+</body>
+</html>

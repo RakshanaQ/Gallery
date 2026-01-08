@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Corp Vista – Responsive Stepper</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#f4f6f8;
+}
+.wrapper{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+    width:260px;
+    padding:24px 18px;
+    background:url('CORP VISTA.jpeg') center/cover no-repeat;
+}
+
+/* ---------- STEPPER ---------- */
+.stepper{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+}
+
+.step{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:32px;
+    position:relative;
+}
+
+.step-label{
+    color:white;
+    font-size:13px;
+}
+
+.circle{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:2px solid #adb5bd;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:600;
+    background:rgba(108,117,125,.5);
+    color:#fff;
+    position:relative;
+}
+
+/* Active steps */
+.active .circle{
+    background:#fff;
+    color:#0d6efd;
+    border-color:#0d6efd;
+}
+
+.activein .circle{
+    background:#fff;
+    color:#6c757d;
+    border-color:#6c757d;
+}
+
+/* Completed steps */
+.completed .circle{
+    background:#198754;
+    border-color:#198754;
+    color:#fff;
+}
+.completed .circle::after{
+    content:"✓";
+    font-weight:bold;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+
+/* Vertical connecting line (desktop) */
+.step:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    left:17px;
+    top:34px;
+    width:2px;
+    height:32px;
+    background:#d6d6d6;
+    z-index:0;
+}
+
+/* Completed line before next step */
+.step.completed:not(:last-child)::after {
+    background: #198754;
+}
+
+/* ---------- CONTENT ---------- */
+.content{
+    flex:1;
+    background:#000;
+    padding:32px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+/* ---------- EVENT CARD ---------- */
+.event-card{
+    background:white;
+    max-width:820px;
+    width:100%;
+    min-height:75vh;
+    padding:22px 26px;
+    border-radius:14px;
+    box-shadow:0 12px 28px rgba(0,0,0,.25);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+}
+
+/* Typography */
+.event-card h2{
+    text-align:center;
+    font-weight:700;
+    font-size:22px;
+    margin-bottom:6px;
+}
+
+.event-card h5{
+    font-size:14px;
+    font-weight:600;
+    margin:6px 0 2px;
+}
+
+.event-card h3{
+    font-size:15px;
+    font-weight:600;
+    margin:6px 0 2px;
+}
+
+.event-card p{
+    font-size:14px;
+    line-height:1.35;
+    margin-bottom:6px;
+}
+
+.lead{
+    font-size:14px;
+    line-height:1.4;
+    margin-bottom:6px;
+}
+
+/* Button */
+.register-btn{
+    text-align:center;
+    margin-top:14px;
+}
+
+.register-btn button{
+    padding:10px 30px;
+    font-size:14px;
+    border-radius:25px;
+    transition:.3s ease;
+}
+
+.register-btn button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(13,110,253,.4);
+}
+/*vasu*/
+ .container{
+            min-height:100px;
+            background: rgba(18, 11, 11, 0.6);
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .form{
+            background: #fff;
+            width:100%;
+            max-width:380px;
+            padding:25px;
+            border-radius:14px;
+            text-align:left;
+        }
+        .form h2{
+            margin-bottom: 20px;
+            color:#222;
+            text-align:center;
+        }
+        form input,select{
+            width:100%;
+            padding:12px;
+            margin:8px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            font-size: 15px;
+        }
+        .qr{
+            margin-top:15px;
+            font-weight:bold;
+        }
+        .qr-img{
+           width:100%;
+           max-width:180px;
+           margin:10px auto;
+           display:block;
+        }
+        button{
+            margin-top: 15px;
+            padding:12px;
+            width:100%;
+            border:none;
+            background:#4CAF50;
+            color:white;
+            font-size: 16px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+        button:hover{
+            background:#43a047
+        }
+        @media(min-width:780px)
+        {
+            .form{
+                max-width:420px;
+                padding:30px;
+            }
+        }
+        @media(min-width:1024px)
+        {
+            .form{
+                max-width:450px;
+            }
+        }
+        .file-upload
+        {
+            margin-top:10px;
+            text-align:center;
+        }
+        .file-upload input[type="file"]
+        {
+           width:100%;
+           padding:8px;
+           border:1px solid #ccc;
+           border-radius:8px;
+           font-size:14px;
+        }
+        .name-row{
+             display: flex;
+            gap: 10px;
+        }
+        .name-row input{
+            width: 50%;
+        }
+        .name-row-3{
+           margin-left: 110px;
+        }
+        .name-row-3 input{
+            width: 50%;
+            text-align: center;
+        }
+        .amount{
+             margin:15px 0;
+             padding:10px;
+             background:#f3f3f3;
+             border-radius:8px;
+        }
+        .amount .row{
+            display:flex;
+            justify-content:space-between;
+            margin:8px 0;
+            font-size:14px;
+            color:#444;
+        }
+        .amount .total{
+              font-weight:bold;
+              border-top:1px solid #ccc;
+              padding-top:10px;
+        }
+        .food-group{
+            margin:10px 0 15px 0;
+        }
+        .food-options{
+           display:flex;
+           align-items:center;
+           gap:25px;
+        }
+        .food-options label{
+           display:flex;
+           align-items:center;
+           gap:6px;
+           font-size:15px;
+           cursor:pointer;
+        }
+        .food-options input[type="radio"]{
+            width:auto;
+            padding:0;
+            margin:0;
+        }
+
+/* ---------- MOBILE ---------- */
+@media(max-width:768px){
+    .wrapper{flex-direction:column;}
+
+    .sidebar{
+        width:100%;
+        padding:14px 10px;
+    }
+
+    .stepper{
+        flex-direction:row;
+        justify-content:space-around;
+        position:relative;
+    }
+
+    .step{
+        flex-direction:column;
+        margin-bottom:0;
+        flex:1;
+        text-align:center;
+    }
+
+    .step-label{
+        font-size:11px;
+    }
+
+    .step::after{display:none;}
+
+    /* Horizontal connecting line */
+    .stepper::before{
+        content:"";
+        position:absolute;
+        top:17px;
+        left:5%;
+        right:5%;
+        height:3px;
+        background:#d6d6d6;
+        border-radius:2px;
+        z-index:0;
+    }
+
+    /* Line segments for completed steps */
+    .step.completed::before{
+        content:"";
+        position:absolute;
+        top:17px;
+        left:0;
+        right:-50%;
+        height:3px;
+        background:#198754;
+        z-index:0;
+    }
+
+    .step .circle{
+        z-index:1; /* ensure circle is above the line */
+    }
+
+    .content{padding:14px;}
+
+    .event-card{
+        padding:18px;
+        border-radius:12px;
+    }
+
+    .event-card h2{font-size:18px;}
+    .event-card p,.lead{font-size:13px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="sidebar">
+        <div class="stepper">
+            <div class="step completed">
+                <div class="circle"></div>
+                <span class="step-label">Description</span>
+            </div>
+            <div class="step active">
+                <div class="circle">2</div>
+                <span class="step-label">Registration</span>
+            </div>
+            <div class="step activein">
+                <div class="circle">3</div>
+                <span class="step-label">Confirmation</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="event-card">
+            <div>
+                <div class="container">
+        <div class="form">
+            <h2>Event Registration</h2>
+            <form id="eventForm">
+                <label>Name:</label>
+                <div class="name-row">
+                    <input type="text" placeholder="Participant-1" required>
+                    <input type="text" placeholder="Participant-2" required>
+                </div>
+                <div class="name-row">
+                    <input type="text" placeholder="Participant-3" required>
+                    <input type="text" placeholder="Participant-4" required>
+                </div>
+                <div class="name-row-3">
+                    <input type="text" placeholder="Participant-5" required>
+                </div>
+                <label>Email:</label>
+                <input type="email" placeholder="Email"required>
+                <label>Mobile Number:</label>
+                <input type="tel" placeholder="mobile number"required>
+                <label>College Name:</label>
+                <input type="text"placeholder="college/organization"required>
+                <label>Course:</label>
+                  <select required>
+                    <option value="" disabled selected>Select the Course</option>
+                    <option>BCA</option>
+                    <option>Bcom</option>
+                    <option>MBA</option>
+                    <option>BBA</option>
+                 </select>
+                 <label>City</label>
+                  <input type="text" placeholder="Participant-1" required>
+                 <label>Select Event</label>
+                <label>food:</label>
+                <div class="food-group">
+                  <div class="food-options">
+                    <label>Veg</label>
+                       <select id="veg" onchange="updateFromVeg()">
+                       <option value="0">0</option>
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>
+                       
+                      </select>
+     <br><br>
+
+                    <label>Non-Veg</label>
+                       <select id="nonveg" onchange="updateFromNonVeg()">
+                       <option value="0">0</option>
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>
+                       
+                    </select>
+                     <script>
+                     const total = 5;
+
+                    function updateFromVeg() {
+                    const veg = document.getElementById("veg").value;
+                     if (veg !== "") {
+                       document.getElementById("nonveg").value = total - veg;
+                    }
+                }
+               function updateFromNonVeg() {
+                 const nonveg = document.getElementById("nonveg").value;
+               if (nonveg !== "") {
+                document.getElementById("veg").value = total - nonveg;
+            }
+        }
+         </script>
+                 </div>
+
+              </div>
+                <label class="qr">Scan & Pay</label>
+                <img src="Qr.jpeg"alt="Payment QR"class="qr-img">
+                <div class="amount">
+                 <div class="row">
+                      <span>Per Person</span>
+                      <span>₹200.00</span>
+                 </div>
+                 <div class="row total">
+                         <span>TOTAL AMOUNT</span>
+                         <span>₹400.00</span>
+                 </div>
+                 </div>
+                <div class="file-upload">
+                   <label>Upload Payment Screenshot</label>
+                   <input type="file" accept="image/*" required>
+                </div>
+                <div class="register-btn">
+                <button id="registerBtn" class="btn btn-primary">Submit</button></div>
+            </form>
+        </div>
+    </div>
+            </div>
+
+           
+
+        </div>
+    </div>
+
+</div>
+<script>
+document.getElementById("registerBtn").addEventListener("click", function() {
+    const fileInput = document.querySelector('input[type="file"]');
+    
+    if (!fileInput.files.length) {
+        alert("Please upload the payment screenshot!"); // custom warning
+        fileInput.focus();
+        return;
+    }
+
+    this.classList.replace("btn-primary", "btn-success");
+    this.textContent = "Submitted ✔";
+    this.disabled = true;
+
+    setTimeout(() => {
+        window.location.href = "CorpvistaConfirmation.html";
+    }, 500);
+});
+
+</script>
+
+
+</body>
+</html>

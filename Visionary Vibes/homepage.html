@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Visionary Vibe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Added Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      padding-top: 90px;
+      /* Adjusted for small space */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('eve.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f2e35 0%, #1f4a55 100%);
+      color: white;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      height: 90px;
+      /* Adjusted for small space */
+      border-bottom: 4px solid #ffeb3b;
+      box-shadow: 0 6px 25px rgba(255, 235, 59, 0.4), 0 4px 20px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, #0f2e35 0%, #1f4a55 80%, #2c5f6b 100%);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .college-logo {
+      width: 80px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .facepreplogo {
+      width: 180px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .logo img {
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      line-height: 2.0;
+      font-weight: 750;
+    }
+
+    .logo-text strong {
+      color: #ffef5b;
+      font-size: 20px;
+    }
+
+    .nav-desktop {
+      display: flex;
+      gap: 5px;
+    }
+
+    .nav-desktop a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-desktop a:hover {
+      background: #ffeb3b;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 235, 59, 0.3);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      justify-content: space-between;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #0f2e35 0%, #1f4a55 100%);
+      flex-direction: column;
+      padding: 20px;
+      z-index: 999;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-mobile.active {
+      display: flex;
+    }
+
+    .nav-mobile a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-bottom: 8px;
+      border-left: 3px solid transparent;
+    }
+
+    /* FIXED: Changed from fa-phone-alt to fa-phone and fixed rotation */
+    .fa-phone {
+      display: inline-block;
+      transform: rotate(0deg) !important;
+      -webkit-transform: rotate(0deg) !important;
+      margin-top: 1px;
+    }
+
+    .nav-mobile a.active {
+      background: rgba(255, 235, 59, 0.3);
+      border-left: 4px solid #ffeb3b;
+      font-weight: bold;
+    }
+
+    .nav-mobile a:hover {
+      background: rgba(255, 235, 59, 0.2);
+      border-left: 3px solid #ffeb3b;
+      padding-left: 25px;
+    }
+
+    .nav-desktop a.active {
+      background: rgba(255, 235, 59, 0.3);
+      border-left: 4px solid #ffeb3b;
+      font-weight: bold;
+    }
+
+    .nav-desktop a:hover {
+      background: rgba(255, 235, 59, 0.2);
+      border-left: 3px solid #ffeb3b;
+      padding-left: 25px;
+    }
+
+    .title-container {
+      padding: 25px 20px 30px 20px;
+      /* Added top padding for small space */
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 235, 59, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .title-img {
+      max-width: 800px;
+      width: 90%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 0 15px rgba(255, 235, 59, 0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hero {
+      background: 
+    linear-gradient(rgba(10, 26, 31, 0.85), rgba(0, 0, 0, 0.9)),
+    url('visivibelogo.jpeg') center center;
+  background-size: cover;
+  background-attachment: fixed;
+      /* This makes background sticky */
+      padding: 30px 0 60px 0;
+      position: relative;
+      min-height: 500px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(31, 74, 85, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 143, 163, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reminder {
+      color: white;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .reminder h2 {
+      color: #ff6f6f;
+      margin-bottom: 15px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reminder p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    .center-img {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .center-img img {
+      width: 100%;
+      max-width: 400px;
+      opacity: 0.9;
+      /* Removed transition property */
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: space-around;
+      color: #ff8fa3;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .countdown div {
+      text-align: center;
+      padding: 10px;
+      flex: 1;
+      /* Equal width for all boxes */
+    }
+
+    .countdown h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(255, 143, 163, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .countdown h1:hover {
+      transform: scale(1.1);
+    }
+
+    .countdown p {
+      font-size: 13px;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about {
+      background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+      padding: 70px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #ff6f6f, #ffeb3b, #1f4a55);
+    }
+
+    .about h2 {
+      margin-bottom: 10px;
+      font-size: 36px;
+      color: #1f4a55;
+      font-weight: 700;
+    }
+
+    .about span {
+      color: #ff8fa3;
+      font-size: 16px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .about p {
+      max-width: 900px;
+      margin: 25px auto;
+      color: #555;
+      line-height: 1.8;
+      font-size: 17px;
+      padding: 0 20px;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #0f2e35 0%, #1f4a55 100%);
+      color: white;
+      text-align: center;
+      padding: 25px 14px;
+      font-size: 14px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6f6f, #ffeb3b, #1f4a55);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        gap: 30px;
+      }
+
+      .reminder,
+      .countdown {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .center-img img {
+        max-width: 350px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+        height: 85px;
+        /* Adjusted for small space */
+      }
+
+      body {
+        padding-top: 85px;
+        /* Adjusted for small space */
+      }
+
+      .nav-desktop {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .title-img {
+        width: 95%;
+      }
+
+      .reminder h2 {
+        font-size: 22px;
+      }
+
+      .countdown h1 {
+        font-size: 30px;
+      }
+
+      .about h2 {
+        font-size: 28px;
+      }
+
+      .about p {
+        font-size: 16px;
+      }
+
+      .college-logo {
+        width: 70px;
+        height: 50px;
+      }
+
+      .facepreplogo {
+        width: 120px;
+        height: 60px;
+      }
+
+      .logo-text {
+        font-size: 15px;
+      }
+
+      .nav-mobile {
+        top: 85px;
+        /* Adjusted to match header height */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-container {
+        padding: 0 15px;
+      }
+
+      .reminder,
+      .countdown {
+        padding: 20px;
+        max-width: 100%;
+      }
+
+      .countdown {
+        display: flex;
+        flex-wrap: nowrap;
+        /* Changed from wrap to nowrap for straight line */
+        justify-content: space-between;
+        gap: 8px;
+        /* Reduced gap for better fit */
+      }
+
+      .countdown div {
+        flex: 1;
+        min-width: 0;
+        /* Allow flex items to shrink below content size */
+        padding: 5px;
+        /* Reduced padding */
+      }
+
+      .countdown h1 {
+        font-size: 20px;
+        /* Reduced font size for mobile */
+        margin-bottom: 2px;
+      }
+
+      .countdown p {
+        font-size: 10px;
+        /* Reduced font size for mobile */
+        letter-spacing: 0.5px;
+      }
+
+      .about {
+        padding: 50px 15px;
+      }
+
+      .about h2 {
+        font-size: 24px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+      }
+
+      .college-logo {
+        width: 50px;
+        height: 40px;
+        flex-shrink: 0;
+      }
+
+      .facepreplogo {
+        width: 90px;
+        height: 40px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .logo-text {
+        font-size: 11px;
+        line-height: 1.3;
+        text-align: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 0;
+      }
+
+      .logo-text strong {
+        color: #ffef5b;
+        font-size: 14px;
+        display: block;
+      }
+
+      header {
+        height: 85px;
+        /* Consistent height */
+        min-height: 85px;
+        padding: 10px 15px;
+      }
+
+      body {
+        padding-top: 85px;
+        /* Consistent padding */
+      }
+
+      .nav-mobile {
+        top: 85px;
+        /* Adjusted to match header height */
+      }
+
+      .menu-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .title-container {
+        padding: 20px 20px 25px 20px;
+        /* Adjusted for small space */
+      }
+
+      /* Ensure fixed background works on mobile */
+      .hero {
+        background-attachment: scroll;
+        /* Fixed background can be problematic on mobile */
+      }
+
+      /* Fallback for mobile devices that don't support fixed background well */
+      @supports (-webkit-touch-callout: none) {
+        .hero {
+          background-attachment: fixed;
+        }
+      }
+    }
+
+
+    /* OVERLAY */
+    .overlay {
+      position: relative;
+      min-height: 100vh;
+      padding: 60px 0;
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .event h1 {
+      color: #fff;
+      letter-spacing: 2px;
+    }
+
+    .event p {
+      color: #eee;
+    }
+
+    /* COUNTDOWN */
+    .countdown-container {
+      max-width: 750px;
+      margin: 0 auto 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .countdown-box {
+      text-align: center;
+      color: #fff;
+    }
+
+    .countdown-box span {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 8px 18px;
+      border-radius: 10px;
+      min-width: 70px;
+    }
+
+    .countdown-box small {
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* CARDS */
+    .gallery-img {
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .card {
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.97);
+      animation: float 6s ease-in-out infinite;
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-14px) scale(1.03);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-body {
+      text-align: center;
+      padding: 1.4rem;
+    }
+
+    .extra-desc {
+      font-size: .85rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      border-radius: 30px;
+      padding: 6px 22px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      .countdown-box span {
+        font-size: 1.5rem;
+        min-width: 55px;
+      }
+    }
+
+    :root {
+      --primary-color: #0d6efd;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Floating Back Button */
+    .floating-back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .floating-back-btn:hover {
+      background: white;
+      color: #333;
+      transform: translateX(5px);
+    }
+
+    /* Section Headers */
+    .section-header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-bottom: 5px solid var(--primary-color);
+    }
+
+    .section-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #222;
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      height: 100%;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Carousel Images */
+    .carousel-item {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .carousel-item img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .glass-card:hover .carousel-item img {
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .card-title {
+      color: #1a1a1a;
+      font-weight: 600;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Underline animation for titles */
+    .card-title::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s;
+    }
+
+    .glass-card:hover .card-title::after {
+      width: 100%;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Batch Badge */
+    .batch-badge {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/kamarj logo.png" alt="Kamaraj College" class="college-logo">
+      <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/facelogo.png" alt="FACE Prep" class="facepreplogo">
+      <div class="logo-text">
+        <strong>Visionary vibes </strong>
+        <strong>2026</strong>
+      </div>
+    </div>
+
+    <div class="nav-desktop">
+      <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+      <a href="#events"><i class="fas fa-calendar-alt"></i> Event</a>
+      <a href="#gallerys"><i class="fas fa-images"></i> Gallery</a>
+      <a href="contactpage.html"><i class="fas fa-phone"></i> Contact</a>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <div class="nav-mobile" id="navMobile">
+    <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+    <a href="#events"><i class="fas fa-calendar-alt"></i> Event</a>
+    <a href="#gallerys"><i class="fas fa-images"></i> Gallery</a>
+    <a href="contactpage.html"><i class="fas fa-phone"></i> Contact</a>
+  </div>
+
+  <section class="hero">
+    <div class="title-container">
+      <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/visi.jpeg" alt="Visionary Vibe" class="title-img">
+    </div>
+
+
+    <div class="hero-container">
+
+      <div class="reminder">
+        <h2><i class="fas fa-bell"></i> Important Reminder</h2>
+        <p>Mark your calendars! The much-awaited Visionary Vibe event is scheduled for <strong>23 January 2026</strong>.
+          Join us for a day of innovation, learning, and networking with industry experts.</p>
+      </div>
+
+      <div class="center-img">
+        <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/visivibelogo-removebg-preview.png" alt="Phoenix Rising">
+      </div>
+
+      <div class="countdown">
+        <div>
+          <h1 id="days">00</h1>
+          <p>DAYS</p>
+        </div>
+        <div>
+          <h1 id="hours">00</h1>
+          <p>HOURS</p>
+        </div>
+        <div>
+          <h1 id="minutes">00</h1>
+          <p>MINUTES</p>
+        </div>
+        <div>
+          <h1 id="seconds">00</h1>
+          <p>SECONDS</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About FACEPrep Campus</h2>
+    <span>Dream • Define • Do</span>
+    <p>
+      FACE Prep is a leading placement-focused training company that empowers students
+      with industry-relevant skills, aptitude training, and real-world exposure.
+      Through structured learning paths, certifications, and mentorship,
+      FACE Prep Campus bridges the gap between education and employability.
+      We are committed to transforming students into industry-ready professionals.
+    </p>
+  </section>
+
+  <div class="overlay" id="events">
+    <div class="container">
+
+      <!-- HEADER -->
+      <div class="text-center mb-4 event">
+        <h1 class="display-4 fw-bold">EVENT PAGE</h1>
+        <p class="lead">Explore • Compete • Celebrate Innovation</p>
+      </div>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown-container">
+        <div class="countdown-box"><span id="days2">00</span><small>DAYS</small></div>
+        <div class="countdown-box"><span id="hours2">00</span><small>HOURS</small></div>
+        <div class="countdown-box"><span id="minutes2">00</span><small>MINUTES</small></div>
+        <div class="countdown-box"><span id="seconds2">00</span><small>SECONDS</small></div>
+      </div>
+
+      <!-- EVENTS -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <!-- 1 BUG BLITZ -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/debuglogo.jpeg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">BUG BLITZ</h5>
+              <p class="text-muted">Where Error Meets Expertise</p>
+              <div class="extra-desc">Debug real-world coding challenges.</div>
+              <a href="bugblitzdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 BRAINX -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Quiz logo.jpeg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">BRAINX</h5>
+              <p class="text-muted">Neural Knockout</p>
+              <div class="extra-desc">Test logic, speed and accuracy.</div>
+              <a href="brainXdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 VISION VAULT -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="Vision vault.jpeg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">Vision Vault</h5>
+              <p class="text-muted">Research Meets Reality</p>
+              <div class="extra-desc">Present ideas shaping the future.</div>
+              <a href="Visionvaultdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 THE CRUCIBLE -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="Crucible.jpeg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">The Crucible</h5>
+              <p class="text-muted">Leadership Under Pressure</p>
+              <div class="extra-desc">Decision-making and leadership test.</div>
+              <a href="crucibleredescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 MAKEIT WEB -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/makeitweblogo.jpeg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">MAKEIT Web</h5>
+              <p class="text-muted">Web Designing</p>
+              <div class="extra-desc">Design responsive modern websites.</div>
+              <a href="makeitwebdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 READY SET HOST -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/anchoringimg.jpg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">Ready Set Host</h5>
+              <p class="text-muted">Anchoring Event</p>
+              <div class="extra-desc">Confidence and stage presence.</div>
+              <a href="anchoringdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 FLYER NOVA -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/adzaapphoto.jpg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">Flyer Nova</h5>
+              <p class="text-muted">Adzap Event</p>
+              <div class="extra-desc">Creative marketing challenge.</div>
+              <a href="adzapdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 THINK THRUST -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/thinkthrustlogo.jpg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">Think Thrust</h5>
+              <p class="text-muted">Aptitude</p>
+              <div class="extra-desc">Speed + smart problem solving.</div>
+              <a href="thinkthrustdescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 CORP VISTA -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/cropvista.jpeg" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">Corp Vista</h5>
+              <p class="text-muted">Corporate Walk</p>
+              <div class="extra-desc">Professional attitude & style.</div>
+              <a href="CorpvistaDescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 FINOVA -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/finova.png" class="gallery-img">
+            <div class="card-body">
+              <h5 class="fw-bold">Finova</h5>
+              <p class="text-muted">Advanced Finance</p>
+              <div class="extra-desc">Modern financial strategies.</div>
+              <a href="Finovadescription.html" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5" id="gallerys">
+    <div class="text-center mb-5">
+      <h1 class="display-5 section-title text-white">Gallery</h1>
+    </div>
+    <section class="mb-5" data-aos="fade-down" data-aos-duration="1000">
+      <div class="section-header text-center">
+        <h1 class="display-5 section-title">BCA BATCH <span class="text-primary">2024-2027</span></h1>
+        <p class="lead text-secondary mt-3">
+          <i class="fas fa-quote-left text-primary me-2"></i>
+          Showcasing the academic spirit of Kamaraj College x FACE Prep Campus. Rooted in excellence and innovation.
+          <i class="fas fa-quote-right text-primary ms-2"></i>
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic1.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic2.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic3.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic4.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic5.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic6.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic7.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Leadership</span>
+              <h5 class="card-title">Student Election Commission</h5>
+              <p class="card-text text-muted">New leaders, new voices, and a bold new mission!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2600"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic50.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2600"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic51.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2600"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic52.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2600"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic53.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Professional</span>
+              <h5 class="card-title">LinkedIn Inauguration</h5>
+              <p class="card-text text-muted">Students get LinkedIn Premium, profile-building sessions, and exciting
+                prizes to boost employability!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic10.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic11.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic13.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic14.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic15.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic16.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2700"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic17.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Events</span>
+              <h5 class="card-title">English Festa</h5>
+              <p class="card-text text-muted">A day filled with fun, learning, and creativity as students learned the
+                power of language!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="400">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA4" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2800"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic21.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2800"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic22.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2800"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic23.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2800"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic24.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2800"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic25.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Certifications</span>
+              <h5 class="card-title">Microsoft Inauguration</h5>
+              <p class="card-text text-muted">Empowering skills through Microsoft Certifications - learn, certify, and
+                advance your career!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="500">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA5" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2900"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic31.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2900"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic37.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2900"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic33.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2900"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic34.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2900"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic35.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2900"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic36.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Tech Fest</span>
+              <h5 class="card-title">I-Techno 2k'24</h5>
+              <p class="card-text text-muted">Where innovation meets technology - learn, connect, and elevate your
+                journey!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA6" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic46.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic41.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic43.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic44.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic45.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic47.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Awards</span>
+              <h5 class="card-title">Certificate Ceremony</h5>
+              <p class="card-text text-muted">Celebrating achievements and certified success - honoring skills,
+                dedication, and excellence!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA7" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic63.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic64.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic65.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic66.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic67.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic68.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic70.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Success</span>
+              <h5 class="card-title">Achievements</h5>
+              <p class="card-text text-muted">Marking major milestones of success and academic achievements!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA8" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic60.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic62.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic69.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Memories</span>
+              <h5 class="card-title">Group Portraits</h5>
+              <p class="card-text text-muted">Memories of a class, moments for a lifetime!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="400">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA9" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3250"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic94.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3250"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic92.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3250"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic93.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="3250"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic90.jpg" class="d-block w-100">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Coding</span>
+              <h5 class="card-title">Code Carnival</h5>
+              <p class="card-text text-muted">A lively technical event featuring coding challenges and fun-based tasks!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="500">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCA10" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0001.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0002.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0004.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0005.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="3200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0006.jpeg"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Engagement</span>
+              <h5 class="card-title">Fun Activity</h5>
+              <p class="card-text text-muted">Refreshing minds and strengthening connections through interactive games!
+              </p>
+            </div>
+          </div>
+        </div>
+         <div class="col" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA10" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-3.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-4.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-5.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">aptitude</span>
+                            <h5 class="card-title">Apticrusade</h5>
+                            <p class="card-text text-muted">Where sharp minds rise and reasoning leads the charge.</p>
+                        </div>
+                    </div>
+            </div>
+
+      </div>
+    </section>
+
+    <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+      <div class="section-header text-center">
+        <h1 class="display-5 section-title">BCA-A,B BATCH <span class="text-primary">2025-2028</span></h1>
+        <p class="lead text-secondary mt-3">
+          <i class="fas fa-microchip me-2"></i>
+          A place to explore knowledge and skills - learn, innovate and shape our future!
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <div class="col" data-aos="flip-left" data-aos-delay="100">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCAnew1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3402.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3597.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Tharun sasi S(1).JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Madhumitha K.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2200"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3491.JPG"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">AI & ML</span>
+              <h5 class="card-title">I BCA A</h5>
+              <p class="card-text text-muted">Building apps without code, powered by ideas!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="flip-left" data-aos-delay="200">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCAnew2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2300"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3378.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2300"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3418.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2300"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Akash Raj T.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2300"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Maria Jency Y.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2300"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3598.JPG"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Innovation</span>
+              <h5 class="card-title">I BCA B</h5>
+              <p class="card-text text-muted">Creating applications without coding, driven by innovation!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="flip-left" data-aos-delay="300">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCAnew3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic210.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic211.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic212.jpeg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic84.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic111.jpeg"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Networking</span>
+              <h5 class="card-title">BCA Orientation</h5>
+              <p class="card-text text-muted">An inaugural event dedicated to unlocking career growth and professional
+                networking through LinkedIn!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+      <div class="section-header text-center">
+        <h1 class="display-5 section-title">BBA BATCH <span class="text-primary">2025-2028</span></h1>
+        <p class="lead text-secondary mt-3">
+          <i class="fas fa-chart-line me-2"></i>
+          Nurturing leadership, entrepreneurship, and ethical business practices.
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <div class="col" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBBA1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3799.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3938.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2100"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3941.JPG"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Marketing</span>
+              <h5 class="card-title">I BBA - Digital Marketing</h5>
+              <p class="card-text text-muted">Digital marketing - An engaging event designed to share knowledge,
+                showcase skills, and inspire innovation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBBA2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic101.jpg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic102.jpg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic103.jpg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2450"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic104.jpg"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Creativity</span>
+              <h5 class="card-title">Design Clash</h5>
+              <p class="card-text text-muted">Design Clash is where creativity competes and great designs take the
+                spotlight!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+      <div class="section-header text-center">
+        <h1 class="display-5 section-title">I B.Sc with AI <span class="text-primary">2025-2028</span></h1>
+        <p class="lead text-secondary mt-3">
+          <i class="fas fa-university me-2"></i>
+          Empowering students with financial knowledge and strong computing foundations.
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBCom1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_4096.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_4066.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Harini S.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Palanipravin.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2000"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_2503.JPG"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Finance</span>
+              <h5 class="card-title">I B.Com Digital Hustle</h5>
+              <p class="card-text text-muted">Where B.Com students turn bold ideas into business proposals!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="card glass-card h-100 border-0">
+            <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2400"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3386.JPG"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2400"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Monica S.jpg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2400"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Villaswathi P.jpg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2400"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Meera Raliya M I.jpg"
+                    class="d-block w-100"></div>
+                <div class="carousel-item" data-bs-interval="2400"><img
+                    src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Supriya S.jpg"
+                    class="d-block w-100"></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="batch-badge">Science</span>
+              <h5 class="card-title">I B.Sc CS with AI</h5>
+              <p class="card-text text-muted">An innovative event where applications are created without writing a
+                single line of code!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+        <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+      <div class="section-header text-center">
+        <h1 class="display-5 section-title">KAMARAJ WOMEN'S COLLEGE BSC CS WITH AI <span class="text-primary">2025-2028</span></h1>
+        <p class="lead text-secondary mt-3">
+          <i class="fas fa-university me-2"></i>
+          Empowering students with financial knowledge and strong computing foundations.
+        </p>
+      </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/onam1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/onam2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/onam3.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Onam celebration</span>
+                            <h5 class="card-title">I B.Sc Cs with AI</h5>
+                            <p class="card-text text-muted">An innovative event where applications are created without writing a single line of code!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCom1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram3.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram4.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram5.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram6.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Students event</span>
+                            <h5 class="card-title">I Bsc Cs with AI</h5>
+                            <p class="card-text text-muted">Where B.Com students turn bold ideas into business proposals!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/youthf1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/youthf2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/youthf3.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Talent</span>
+                            <h5 class="card-title">Youth Festival</h5>
+                            <p class="card-text text-muted">Youth Festival: Dream • Perform • Shine!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/Achievment1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/Achievment2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/Achievment3.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Success</span>
+                            <h5 class="card-title">Achievements</h5>
+                            <p class="card-text text-muted">Success made possible by teamwork!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/exi1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/exi2.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">DreamSpace</span>
+                            <h5 class="card-title">Exibition</h5>
+                            <p class="card-text text-muted">Young minds, big ideas!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+  </div>
+
+  <footer>
+    © 2025 Kamaraj College | FACE Prep Campus | Visionary Vibes Event | All Rights Reserved
+  </footer>
+
+  <script>
+    const targetDate = new Date("January 23, 2026 00:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        return;
+      }
+
+      document.getElementById("days").innerText =
+        Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+
+      document.getElementById("hours").innerText =
+        Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+
+      document.getElementById("minutes").innerText =
+        Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+
+      document.getElementById("seconds").innerText =
+        Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+    }, 1000);
+
+  </script>
+  <script>
+    // Select all nav links
+    const navLinks = document.querySelectorAll('.nav-desktop a, .nav-mobile a');
+
+    // Sections to track
+    const sections = [
+      { id: '', linkText: 'Home' },           // top of page
+      { id: 'events', linkText: 'Event' },
+      { id: 'gallerys', linkText: 'Gallery' }
+    ];
+
+    function setActiveLink() {
+      let current = '';
+
+      sections.forEach(section => {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = section.linkText;
+          }
+        }
+      });
+
+      // Default to Home if near top
+      if (window.scrollY < 200) {
+        current = 'Home';
+      }
+
+      // Update active class
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.textContent.trim().includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Run on scroll and load
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
+
+    // Mobile menu toggle (existing)
+    const menuToggle = document.getElementById('menuToggle');
+    const navMobile = document.getElementById('navMobile');
+
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navMobile.classList.toggle('active');
+
+      const spans = menuToggle.querySelectorAll('span');
+      if (navMobile.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navMobile.contains(e.target)) {
+        navMobile.classList.remove('active');
+        const spans = menuToggle.querySelectorAll('span');
+        spans.forEach(span => {
+          span.style.transform = 'none';
+          span.style.opacity = '1';
+        });
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  </script>
+  <script>
+    const eventDate = new Date("2026-01-23T00:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+      if (diff < 0) {
+        document.getElementById("days2").innerText = "00";
+        document.getElementById("hours2").innerText = "00";
+        document.getElementById("minutes2").innerText = "00";
+        document.getElementById("seconds2").innerText = "00";
+        return;
+      }
+      document.getElementById("days2").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      document.getElementById("hours2").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      document.getElementById("minutes2").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      document.getElementById("seconds2").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+    }, 1000);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 120,
+    });
+  </script>
+</body>
+
+</html>

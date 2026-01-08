@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d6efd">
+    <title>Ignitia Gallery | Kamaraj College</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/LOGO.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Floating Back Button */
+        .floating-back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .floating-back-btn:hover {
+            background: white;
+            color: #333;
+            transform: translateX(5px);
+        }
+
+        /* Section Headers */
+        .section-header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .section-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #222;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Carousel Images */
+        .carousel-item {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .glass-card:hover .carousel-item img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .card-title {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Underline animation for titles */
+        .card-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .glass-card:hover .card-title::after {
+            width: 100%;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Batch Badge */
+        .batch-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <a href="homepage.html" class="floating-back-btn">
+        <i class="fas fa-arrow-left me-2"></i> Back to Home
+    </a>
+
+    <div class="container py-5">
+        
+        <section class="mb-5" data-aos="fade-down" data-aos-duration="1000">
+            <header class="section-header text-center">
+                <h1 class="display-5 section-title">BCA BATCH <span class="text-primary">2024-2027</span></h1>
+                <p class="lead text-secondary mt-3">
+                    <i class="fas fa-quote-left text-primary me-2"></i>
+                    Showcasing the academic spirit of Kamaraj College x FACE Prep Campus. Rooted in excellence and innovation.
+                    <i class="fas fa-quote-right text-primary ms-2"></i>
+                </p>
+            </header>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic1.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic2.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic3.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic4.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic5.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic6.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2500"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic7.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Leadership</span>
+                            <h5 class="card-title">Student Election Commission</h5>
+                            <p class="card-text text-muted">New leaders, new voices, and a bold new mission!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2600"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic50.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2600"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic51.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2600"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic52.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2600"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic53.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Professional</span>
+                            <h5 class="card-title">LinkedIn Inauguration</h5>
+                            <p class="card-text text-muted">Students get LinkedIn Premium, profile-building sessions, and exciting prizes to boost employability!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic10.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic11.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic13.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic14.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic15.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic16.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2700"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic17.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Events</span>
+                            <h5 class="card-title">English Festa</h5>
+                            <p class="card-text text-muted">A day filled with fun, learning, and creativity as students learned the power of language!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA4" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2800"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic21.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2800"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic22.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2800"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic23.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2800"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic24.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2800"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic25.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Certifications</span>
+                            <h5 class="card-title">Microsoft Inauguration</h5>
+                            <p class="card-text text-muted">Empowering skills through Microsoft Certifications - learn, certify, and advance your career!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA5" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2900"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic31.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2900"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic37.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2900"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic33.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2900"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic34.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2900"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic35.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2900"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic36.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Tech Fest</span>
+                            <h5 class="card-title">I-Techno 2k'24</h5>
+                            <p class="card-text text-muted">Where innovation meets technology - learn, connect, and elevate your journey!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA6" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic46.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic41.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic43.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic44.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic45.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic47.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Awards</span>
+                            <h5 class="card-title">Certificate Ceremony</h5>
+                            <p class="card-text text-muted">Celebrating achievements and certified success - honoring skills, dedication, and excellence!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA7" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic63.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic64.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic65.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic66.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic67.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic68.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic70.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Success</span>
+                            <h5 class="card-title">Achievements</h5>
+                            <p class="card-text text-muted">Marking major milestones of success and academic achievements!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA8" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic60.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic62.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic69.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Memories</span>
+                            <h5 class="card-title">Group Portraits</h5>
+                            <p class="card-text text-muted">Memories of a class, moments for a lifetime!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA9" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3250"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic94.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3250"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic92.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3250"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic93.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3250"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic90.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Coding</span>
+                            <h5 class="card-title">Code Carnival</h5>
+                            <p class="card-text text-muted">A lively technical event featuring coding challenges and fun-based tasks!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA10" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0001.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0002.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0004.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0005.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic0006.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Engagement</span>
+                            <h5 class="card-title">Fun Activity</h5>
+                            <p class="card-text text-muted">Refreshing minds and strengthening connections through interactive games!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCA10" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-3.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-4.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="3200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/apti-5.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">aptitude</span>
+                            <h5 class="card-title">Apticrusade</h5>
+                            <p class="card-text text-muted">Where sharp minds rise and reasoning leads the charge.</p>
+                        </div>
+                    </div>
+                </div>
+                 
+
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+            <header class="section-header text-center">
+                <h1 class="display-5 section-title">BCA-A,B BATCH <span class="text-primary">2025-2028</span></h1>
+                <p class="lead text-secondary mt-3">
+                    <i class="fas fa-microchip me-2"></i>
+                    A place to explore knowledge and skills - learn, innovate and shape our future!
+                </p>
+            </header>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                
+                <div class="col" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCAnew1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3402.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3597.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Tharun sasi S(1).JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Madhumitha K.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2200"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3491.JPG" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">AI & ML</span>
+                            <h5 class="card-title">I BCA A</h5>
+                            <p class="card-text text-muted">Building apps without code, powered by ideas!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCAnew2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2300"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3378.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2300"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3418.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2300"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Akash Raj T.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2300"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Maria Jency Y.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2300"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3598.JPG" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Innovation</span>
+                            <h5 class="card-title">I BCA B</h5>
+                            <p class="card-text text-muted">Creating applications without coding, driven by innovation!</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCAnew3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic210.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic211.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic212.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic84.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic111.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Networking</span>
+                            <h5 class="card-title">BCA Orientation</h5>
+                            <p class="card-text text-muted">An inaugural event dedicated to unlocking career growth and professional networking through LinkedIn!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+            <header class="section-header text-center">
+                <h1 class="display-5 section-title">BBA BATCH <span class="text-primary">2025-2028</span></h1>
+                <p class="lead text-secondary mt-3">
+                    <i class="fas fa-chart-line me-2"></i>
+                    Nurturing leadership, entrepreneurship, and ethical business practices.
+                </p>
+            </header>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                
+                <div class="col" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBBA1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3799.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3938.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2100"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3941.JPG" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Marketing</span>
+                            <h5 class="card-title">I BBA - Digital Marketing</h5>
+                            <p class="card-text text-muted">Digital marketing - An engaging event designed to share knowledge, showcase skills, and inspire innovation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBBA2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic101.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic102.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic103.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2450"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/bca1/pic104.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Creativity</span>
+                            <h5 class="card-title">Design Clash</h5>
+                            <p class="card-text text-muted">Design Clash is where creativity competes and great designs take the spotlight!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+            <header class="section-header text-center">
+                <h1 class="display-5 section-title">COMMERCE & SCIENCE <span class="text-primary">2025-2028</span></h1>
+                <p class="lead text-secondary mt-3">
+                    <i class="fas fa-university me-2"></i>
+                    Empowering students with financial knowledge and strong computing foundations.
+                </p>
+            </header>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCom1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_4096.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_4066.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Harini S.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Palanipravin.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_2503.JPG" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Finance</span>
+                            <h5 class="card-title">I B.Com Digital Hustle</h5>
+                            <p class="card-text text-muted">Where B.Com students turn bold ideas into business proposals!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/IMG_3386.JPG" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Monica S.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Villaswathi P.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Meera Raliya M I.jpg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/IGNITIA/Supriya S.jpg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Science</span>
+                            <h5 class="card-title">I B.Sc CS with AI</h5>
+                            <p class="card-text text-muted">An innovative event where applications are created without writing a single line of code!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="mb-5" data-aos="fade-up" data-aos-duration="1000">
+            <header class="section-header text-center">
+                <h1 class="display-5 section-title">I B.Sc CS with AI <span class="text-primary">2025-2028</span></h1>
+                <p class="lead text-secondary mt-3">
+                    <i class="fas fa-university me-2"></i>
+                    Empowering students with financial knowledge and strong computing foundations.
+                </p>
+            </header>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/onam1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/onam2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/onam3.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Onam celebration</span>
+                            <h5 class="card-title">I B.Sc CS with AI</h5>
+                            <p class="card-text text-muted">An innovative event where applications are created without writing a single line of code!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBCom1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram3.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram4.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram5.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2000"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/seprogram6.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Students event</span>
+                            <h5 class="card-title">I B.Com Digital Hustle</h5>
+                            <p class="card-text text-muted">Where B.Com students turn bold ideas into business proposals!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/youthf1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/youthf2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/youthf3.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Talent</span>
+                            <h5 class="card-title">Youth Festival</h5>
+                            <p class="card-text text-muted">Youth Festival: Dream • Perform • Shine!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/Achievment1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/Achievment2.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/Achievment3.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">Success</span>
+                            <h5 class="card-title">Achievements</h5>
+                            <p class="card-text text-muted">Success made possible by teamwork!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 border-0">
+                        <div id="carouselBSc1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/exi1.jpeg" class="d-block w-100"></div>
+                                <div class="carousel-item" data-bs-interval="2400"><img src="https://raw.githubusercontent.com/RakshanaQ/Gallery/main/linked/exi2.jpeg" class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="batch-badge">DreamSpace</span>
+                            <h5 class="card-title">Exibition</h5>
+                            <p class="card-text text-muted">Young minds, big ideas!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animate On Scroll
+        AOS.init({
+            once: true, // Animation happens only once
+            offset: 120, // Offset (in px) from the original trigger point
+        });
+    </script>
+</body>
+
+</html>

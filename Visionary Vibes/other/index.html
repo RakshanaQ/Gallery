@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Gallery</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* BODY */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #000;
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position: relative;
+            min-height: 100vh;
+            padding: 60px 0;
+            background: rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+        }
+
+        /* FIXED FULL PAGE BACKGROUND */
+        .overlay::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("eventlogo.jpeg") center/cover no-repeat;
+            background-attachment: fixed;
+            opacity: 0.25;
+            /* INCREASED OPACITY */
+            z-index: 0;
+        }
+
+        /* CONTENT ABOVE BG */
+        .overlay>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER */
+        header h1 {
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #eee;
+        }
+
+        /* COUNTDOWN */
+        .countdown-container {
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            backdrop-filter: blur(6px);
+        }
+
+        .countdown-box {
+            text-align: center;
+            color: #fff;
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 18px;
+            border-radius: 10px;
+            min-width: 70px;
+        }
+
+        .countdown-box small {
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* CARDS */
+        .gallery-img {
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .card {
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.97);
+            animation: float 6s ease-in-out infinite;
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-14px) scale(1.03);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 1.4rem;
+        }
+
+        .extra-desc {
+            font-size: .85rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            border-radius: 30px;
+            padding: 6px 22px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px) {
+            .countdown-box span {
+                font-size: 1.5rem;
+                min-width: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+        <div class="container">
+
+            <!-- HEADER -->
+            <header class="text-center mb-4">
+                <h1 class="display-4 fw-bold">EVENT PAGE</h1>
+                <p class="lead">Explore • Compete • Celebrate Innovation</p>
+            </header>
+
+            <!-- COUNTDOWN -->
+            <div class="countdown-container">
+                <div class="countdown-box"><span id="days">0</span><small>DAYS</small></div>
+                <div class="countdown-box"><span id="hours">0</span><small>HOURS</small></div>
+                <div class="countdown-box"><span id="minutes">0</span><small>MINUTES</small></div>
+                <div class="countdown-box"><span id="seconds">0</span><small>SECONDS</small></div>
+            </div>
+
+            <!-- EVENTS -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <!-- 1 BUG BLITZ -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="debuglogo.jpeg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">BUG BLITZ</h5>
+                            <p class="text-muted">Where Error Meets Expertise</p>
+                            <div class="extra-desc">Debug real-world coding challenges.</div>
+                            <a href="bugblitzdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 BRAINX -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="Quiz logo.jpeg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">BRAINX</h5>
+                            <p class="text-muted">Neural Knockout</p>
+                            <div class="extra-desc">Test logic, speed and accuracy.</div>
+                            <a href="brainXdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 VISION VAULT -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="Vision vault.jpeg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Vision Vault</h5>
+                            <p class="text-muted">Research Meets Reality</p>
+                            <div class="extra-desc">Present ideas shaping the future.</div>
+                            <a href="Visionvaultdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 THE CRUCIBLE -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="crucible.jpeg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">The Crucible</h5>
+                            <p class="text-muted">Leadership Under Pressure</p>
+                            <div class="extra-desc">Decision-making and leadership test.</div>
+                            <a href="crucibleredescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 MAKEIT WEB -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="makeitweblogo.jpeg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">MAKEIT Web</h5>
+                            <p class="text-muted">Web Designing</p>
+                            <div class="extra-desc">Design responsive modern websites.</div>
+                            <a href="makeitwebdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 READY SET HOST -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="anchoringimg.jpg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Ready Set Host</h5>
+                            <p class="text-muted">Anchoring Event</p>
+                            <div class="extra-desc">Confidence and stage presence.</div>
+                            <a href="anchoringdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 FLYER NOVA -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="ADZAPphoto.jpg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Flyer Nova</h5>
+                            <p class="text-muted">Adzap Event</p>
+                            <div class="extra-desc">Creative marketing challenge.</div>
+                            <a href="adzapdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 THINK THRUST -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="thinkthrustlogo.jpg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Think Thrust</h5>
+                            <p class="text-muted">Aptitude</p>
+                            <div class="extra-desc">Speed + smart problem solving.</div>
+                            <a href="thinkthrustdescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 CORP VISTA -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="CORP VISTA.jpeg" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Corp Vista</h5>
+                            <p class="text-muted">Corporate Walk</p>
+                            <div class="extra-desc">Professional attitude & style.</div>
+                            <a href="CorpvistaDescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 FINOVA -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="finova.png" class="gallery-img">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Finova</h5>
+                            <p class="text-muted">Advanced Finance</p>
+                            <div class="extra-desc">Modern financial strategies.</div>
+                            <a href="Finovadescription.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- COUNTDOWN SCRIPT -->
+    <script>
+        const eventDate = new Date("2026-01-23T00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+            if (diff < 0) return;
+            days.innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            hours.innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            minutes.innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            seconds.innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
